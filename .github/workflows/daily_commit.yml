@@ -2,7 +2,10 @@ name: Govind's Daily Commit
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Runs every day at 12 PM (noon) UTC
+    - cron: '0 0 * * *'     # 00:00 UTC
+    - cron: '0 6 * * *'     # 06:00 UTC
+    - cron: '0 12 * * *'    # 12:00 UTC
+    - cron: '0 18 * * *'    # 18:00 UTC
 
 jobs:
   commit:
@@ -18,7 +21,7 @@ jobs:
       run: |
         FILE="commit_number.md"
         if [ ! -f "$FILE" ]; then
-          echo "Hello, my name is Govind S Kumar" > "$FILE"
+          echo "Hello" > "$FILE"
           echo "commit number: 1" >> "$FILE"
         else
           CURRENT_COUNT=$(grep -oP 'commit number: \K\d+' "$FILE")
